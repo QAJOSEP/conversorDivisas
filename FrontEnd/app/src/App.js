@@ -1,6 +1,17 @@
+import { useState } from 'react';
 import Navbar from './components/Navbar';
 
 function App() {
+
+  const [inputValue, setInputValue] = useState('')
+  const [inputValue2, setInputValue2] = useState('')
+
+  function handleInputChange(e) {
+    setInputValue(e.target.value.toUpperCase());
+  }
+  function handleInputChange2(e) {
+    setInputValue2(e.target.value.toUpperCase());
+  }
 
   return (<>
     <Navbar />
@@ -21,8 +32,9 @@ function App() {
         <label className=' block text-gray-800 text-lg font-bold'>
           De la moneda
         </label>
-        <input className='uppercase'
+        <input
           type='text'
+          value={inputValue} onChange={handleInputChange}
           name='fromCurrency'
           placeholder='  Ingresa Moneda'
           autoComplete='off'
@@ -33,8 +45,9 @@ function App() {
         <label className=' block text-gray-800 text-lg font-bold'>
           A la moneda
         </label>
-        <input className='uppercase'
+        <input
           type='text'
+          value={inputValue2} onChange={handleInputChange2}
           name='toCurrency'
           placeholder='  Moneda destino'
           autoComplete='off'
@@ -56,8 +69,6 @@ function App() {
           >Convertir</button>
         </div>
       </form>
-
-
     </div>
   </>
   )
@@ -68,7 +79,7 @@ const result = (fromCurrency, toCurrency, quantity) => {
     fetch(`http://localhost:8100/currency-conversion/from/${fromCurrency}/to/${toCurrency}/${quantity}`)
       .then(response =>
         response.json())
-      .then(data => alert("$"+`${quantity}`+" "+`${fromCurrency}`+" "+"Equivalen a:"+" "+"$"+data.totalCalcAmount+" "+`${toCurrency}`))
+      .then(data => alert("$" + `${quantity}` + " " + `${fromCurrency}` + " " + "Equivalen a:" + " " + "$" + data.totalCalcAmount + " " + `${toCurrency}`))
 
   else alert('Error debe llenar los 3 campos')
 }
