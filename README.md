@@ -1,5 +1,6 @@
-#conversorDivisas
 #challengeoneconversorlatam4
+
+<img src="https://media.giphy.com/media/VMabDcwVzYhdXDElzL/giphy.gif"/>
 
 1. Clona el repositorio.
 2. Abrir los proyectos Spring boot de currency-conversion-service y currency-exchange (en el editor o IDE de tu preferencia, eclipse, intelliJ, VS Code)
